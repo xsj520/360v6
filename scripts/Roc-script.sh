@@ -1,7 +1,7 @@
 # 修改默认IP & 固件名称 & 编译署名
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-sed -i "s/hostname='.*'/hostname='Roc'/g" package/base-files/files/bin/config_generate
-sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Built by Roc')/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='Openwrt'/g" package/base-files/files/bin/config_generate
+sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Built by xsj')/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 # 调整在Argon主题下，概览页面显示/隐藏按钮的样式
 sed -i '/^\.td\.cbi-section-actions {$/,/^}$/ {
@@ -83,6 +83,26 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter.git package/OpenAp
 git clone --depth=1 https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 git clone --depth=1 https://github.com/NONGFAH/luci-app-athena-led package/luci-app-athena-led
 chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app-athena-led/root/usr/sbin/athena-led
+
+sed -i 's/"网络存储"/"存储"/g' `grep "网络存储" -rl ./`
+sed -i 's/"HomeProxy"/"科学上网"/g' `grep "HomeProxy" -rl ./`
+sed -i 's/"启动项"/"启动项目"/g' `grep "启动项" -rl ./`
+sed -i 's/"挂载点"/"挂载地点"/g' `grep "挂载点" -rl ./`
+sed -i 's/"重启"/"重启开关"/g' `grep "重启" -rl ./`
+sed -i 's/"主机名"/"主机名称"/g' `grep "主机名" -rl ./`
+sed -i 's/"接口"/"接口设置"/g' `grep "接口" -rl ./`
+sed -i 's/"无线"/"无线设置"/g' `grep "无线" -rl ./`
+sed -i 's/"管理权"/"管理设置"/g' `grep "管理权" -rl ./`
+sed -i 's/"软件包"/"软件包名"/g' `grep "软件包" -rl ./`
+sed -i 's/"UPnP IGD 和 PCP"/"upnp设置"/g' `grep "UPnP IGD 和 PCP" -rl ./`
+sed -i 's/"动态 DNS"/"动态DNS"/g' `grep "动态 DNS" -rl ./`
+sed -i 's/"路由表"/"路由器表"/g' `grep "路由表" -rl ./`
+sed -i 's/"路由"/"路由设置"/g' `grep "路由" -rl ./`
+sed -i 's/"备份与更新"/"备份升级"/g' `grep "备份与更新" -rl ./`
+sed -i 's/"DHCP"/"D H C P"/g' `grep "DHCP" -rl ./`
+sed -i 's/"DNS"/"DNS设置"/g' `grep "DNS" -rl ./`
+sed -i 's/"终端"/"终端命令"/g' `grep "终端" -rl ./`
+sed -i 's/"防火墙"/"防火墙区"/g' `grep "防火墙" -rl ./`
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
