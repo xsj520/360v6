@@ -1,6 +1,6 @@
 # 修改默认IP & 固件名称 & 编译署名和时间
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-sed -i "s/hostname='.*'/hostname='Roc'/g" package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='Openwrt'/g" package/base-files/files/bin/config_generate
 sed -i "s#_('Firmware Version'), (L\.isObject(boardinfo\.release) ? boardinfo\.release\.description + ' / ' : '') + (luciversion || ''),# \
             _('Firmware Version'),\n \
             E('span', {}, [\n \
@@ -11,7 +11,7 @@ sed -i "s#_('Firmware Version'), (L\.isObject(boardinfo\.release) ? boardinfo\.r
                 href: 'https://github.com/laipeng668/openwrt-ci-roc/releases',\n \
                 target: '_blank',\n \
                 rel: 'noopener noreferrer'\n \
-                }, [ 'Built by Roc $(date "+%Y-%m-%d %H:%M:%S")' ])\n \
+                }, [ 'Built by xsj $(date "+%Y-%m-%d %H:%M:%S")' ])\n \
             ]),#" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 # 调整NSS驱动q6_region内存区域预留大小（ipq6018.dtsi默认预留85MB，ipq6018-512m.dtsi默认预留55MB，带WiFi必须至少预留54MB，以下分别是改成预留16MB、32MB、64MB和96MB）
@@ -81,6 +81,32 @@ git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-open
 
 # 清理 PassWall 的 chnlist 规则文件
 echo "baidu.com"  > package/luci-app-passwall/luci-app-passwall/root/usr/share/passwall/rules/chnlist
+
+sed -i 's/"网络存储"/"存储"/g' `grep "网络存储" -rl ./`
+sed -i 's/"HomeProxy"/"科学上网"/g' `grep "HomeProxy" -rl ./`
+sed -i 's/"启动项"/"启动项目"/g' `grep "启动项" -rl ./`
+sed -i 's/"挂载点"/"挂载地点"/g' `grep "挂载点" -rl ./`
+sed -i 's/"重启"/"重启开关"/g' `grep "重启" -rl ./`
+sed -i 's/"主机名"/"主机名称"/g' `grep "主机名" -rl ./`
+sed -i 's/"接口"/"接口设置"/g' `grep "接口" -rl ./`
+sed -i 's/"无线"/"无线设置"/g' `grep "无线" -rl ./`
+sed -i 's/"管理权"/"管理设置"/g' `grep "管理权" -rl ./`
+sed -i 's/"软件包"/"软件包名"/g' `grep "软件包" -rl ./`
+sed -i 's/"UPnP IGD 和 PCP"/"upnp设置"/g' `grep "UPnP IGD 和 PCP" -rl ./`
+sed -i 's/"动态 DNS"/"动态DNS"/g' `grep "动态 DNS" -rl ./`
+sed -i 's/"路由表"/"路由器表"/g' `grep "路由表" -rl ./`
+sed -i 's/"路由"/"路由设置"/g' `grep "路由" -rl ./`
+sed -i 's/"备份与更新"/"备份升级"/g' `grep "备份与更新" -rl ./`
+sed -i 's/"DHCP"/"D H  C P"/g' `grep "DHCP" -rl ./`
+sed -i 's/"DNS"/"DNS设置"/g' `grep "DNS" -rl ./`
+sed -i 's/"终端"/"终端命令"/g' `grep "终端" -rl ./`
+sed -i 's/"防火墙"/"防火墙区"/g' `grep "防火墙" -rl ./`
+sed -i 's/"IP/MAC绑定"/"IP/MAC"/g' `grep "IP/MAC绑定" -rl ./`
+sed -i 's/"智能辅助系统更新"/"系统更新"/g' `grep "智能辅助系统更新" -rl ./`
+sed -i 's/"Watchcat"/"断网重启"/g' `grep "Watchcat" -rl ./`
+sed -i 's/"SQM 队列管理"/"网络控制"/g' `grep "SQM 队列管理" -rl ./`
+sed -i 's/"进程"/"进程情况"/g' `grep "进程" -rl ./`
+
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
