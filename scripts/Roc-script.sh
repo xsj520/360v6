@@ -71,6 +71,8 @@ git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-open
 # 清理 PassWall 的 chnlist 规则文件
 echo "baidu.com"  > package/luci-app-passwall/luci-app-passwall/root/usr/share/passwall/rules/chnlist
 
+echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+
 sed -i 's/"网络存储"/"存储"/g' `grep "网络存储" -rl ./`
 sed -i 's/"HomeProxy"/"科学上网"/g' `grep "HomeProxy" -rl ./`
 sed -i 's/"启动项"/"启动项目"/g' `grep "启动项" -rl ./`
