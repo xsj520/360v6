@@ -12,8 +12,8 @@ env:
   CONFIG_FILE: configs/r3g.config
   GENERAL_CONFIG_FILE: configs/General.config
   DIY_SCRIPT: scripts/Roc-script.sh
-  CLASH_KERNEL: amd64
-  FIRMWARE_TAG: IPQ60XX
+  CLASH_KERNEL: mipsel
+  FIRMWARE_TAG: mt7621
   TZ: Asia/Shanghai
 
 jobs:
