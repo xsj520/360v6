@@ -1,4 +1,4 @@
-name: IPQ60XX-LibWrt
+name: r3g-LibWrt
 
 on:
   workflow_dispatch:
