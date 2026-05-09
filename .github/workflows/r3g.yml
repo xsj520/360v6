@@ -8,6 +8,7 @@ env:
   REPO_URL: https://github.com/laipeng668/openwrt-6.x.git
   REPO_BRANCH: main-nss
   CONFIG_FILE: configs/r3g.config
+  GENERAL_CONFIG_FILE: configs/General.config
   DIY_SCRIPT: scripts/Roc-script.sh
   CLASH_KERNEL: mipsel
   FIRMWARE_TAG: mt7621
@@ -93,17 +94,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    # ✅ 这里是自动修复 hostapd he_mu_edca 编译错误
-    - name: Patch hostapd fix he_mu_edca error
-      run: |
-        cd $OPENWRT_PATH
-        FILE=$(find build_dir/target-*/hostapd-*/src/ap/hostapd.c 2>/dev/null | head -n1)
-        if [ -n "$FILE" ]; then
-          sed -i 's/.*he_mu_edca\.he_qos_info.*//' "$FILE"
-          echo "✅ 已修复 hostapd 报错"
-        else
-          echo "ℹ️ 未找到文件，跳过补丁"
-        fi
+
 
     - name: Load Custom Configuration(加载自定义配置)
       run: |
