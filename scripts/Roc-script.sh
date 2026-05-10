@@ -91,7 +91,7 @@ sed -i 's/"动态 DNS"/"动态DNS"/g' `grep "动态 DNS" -rl ./`
 sed -i 's/"路由表"/"路由器表"/g' `grep "路由表" -rl ./`
 sed -i 's/"路由"/"路由设置"/g' `grep "路由" -rl ./`
 sed -i 's/"备份与更新"/"备份升级"/g' `grep "备份与更新" -rl ./`
-sed -i 's/"DHCP"/"D H  C P"/g' `grep "DHCP" -rl ./`
+sed -i 's/"DHCP"/"地址分配"/g' `grep "DHCP" -rl ./`
 sed -i 's/"DNS"/"DNS设置"/g' `grep "DNS" -rl ./`
 sed -i 's/"终端"/"终端命令"/g' `grep "终端" -rl ./`
 sed -i 's/"防火墙"/"防火墙区"/g' `grep "防火墙" -rl ./`
