@@ -278,6 +278,7 @@ if package_enabled luci-theme-aurora luci-app-aurora-config; then
   rm -rf feeds/luci/themes/luci-theme-aurora
   clone_repository https://github.com/eamonxg/luci-theme-aurora master feeds/luci/themes/luci-theme-aurora
 fi
+
 if package_enabled luci-app-aurora-config; then
   rm -rf feeds/luci/applications/luci-app-aurora-config
   clone_repository https://github.com/eamonxg/luci-app-aurora-config master feeds/luci/applications/luci-app-aurora-config
