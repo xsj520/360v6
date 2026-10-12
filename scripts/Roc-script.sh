@@ -327,6 +327,18 @@ if package_enabled luci-app-passwall2; then
   rm -rf feeds/luci/applications/luci-app-passwall2
   clone_repository https://github.com/Openwrt-Passwall/openwrt-passwall2 main package/luci-app-passwall2
 fi
+
+if package_enabled luci-app-openclash; then
+  rm -rf feeds/luci/applications/luci-app-openclash
+  clone_repository https://github.com/vernesong/OpenClash master package/luci-app-openclash
+fi
+
+# 清理 PassWall 的 chnlist 规则文件
+# echo "baidu.com"  > package/luci-app-passwall/luci-app-passwall/root/usr/share/passwall/rules/chnlist
+
+./scripts/feeds update -i -a
+./scripts/feeds install -a
+
 sed -i 's/"网络存储"/"存储"/g' `grep "网络存储" -rl ./`
 sed -i 's/"HomeProxy"/"科学上网"/g' `grep "HomeProxy" -rl ./`
 sed -i 's/"启动项"/"启动项目"/g' `grep "启动项" -rl ./`
@@ -352,16 +364,3 @@ sed -i 's/"进程"/"进程情况"/g' `grep "进程" -rl ./`
 sed -i 's/"ShadowSocksR Plus+"/"科学上网"/g' `grep "ShadowSocksR Plus+" -rl ./`
 sed -i 's/"Plugins"/"全局设置"/g' `grep "Plugins" -rl ./`
 sed -i 's/"插件"/"插件设置"/g' `grep "插件" -rl ./`
-
-
-if package_enabled luci-app-openclash; then
-  rm -rf feeds/luci/applications/luci-app-openclash
-  clone_repository https://github.com/vernesong/OpenClash master package/luci-app-openclash
-fi
-
-# 清理 PassWall 的 chnlist 规则文件
-# echo "baidu.com"  > package/luci-app-passwall/luci-app-passwall/root/usr/share/passwall/rules/chnlist
-
-./scripts/feeds update -i -a
-./scripts/feeds install -a
-
